@@ -1,0 +1,77 @@
+/* Conteneur global */
+.login-container {
+  min-height: 100vh;
+  background-color: #2e3440; /* fond sombre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Formulaire */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+}
+
+/* Titre + description */
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-description {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 40px;
+}
+
+/* Champs */
+.login-form ul {
+  list-style: none;
+  padding: 0;
+}
+
+.login-form li {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.login-form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.login-form input {
+  background-color: #6b7280;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+.login-form input::placeholder {
+  color: #d1d5db;
+}
+
+/* Bouton */
+.login-form button {
+  background-color: white;
+  color: black;
+  padding: 12px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 50%;
+  align-self: center;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
