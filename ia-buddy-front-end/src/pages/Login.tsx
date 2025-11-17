@@ -5,7 +5,7 @@ export function Login() {
     <div className="login-container">
       <form className="login-form">
         <h1 className="login-title">AI Buddy</h1>
-        <p className="login-description">Description</p>
+        <p className="login-description">Inscription</p>
 
         <ul>
           <li>

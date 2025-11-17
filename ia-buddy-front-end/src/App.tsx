@@ -11,7 +11,7 @@ function App() {
 
       <nav>
 
-        <Link to="/login">Connexion</Link>
+        <Link to="/login">Connexion à l'outil</Link>
 
 
       </nav>
