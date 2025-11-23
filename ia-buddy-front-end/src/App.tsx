@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className='flew flex-col min-h-screen h-screen '>
-        <nav className='absolute bg-red-12 flex justify-center gap-3'>
+        <nav className='absolute right-0 bg-red-12 flex justify-center gap-3'>
 
           <Link to="/">Accueil</Link>
           <Link to="/chat/1">Chat 1</Link>
@@ -22,7 +22,7 @@ function App() {
           <Routes>
 
             <Route path="/" element={<Home />} />
-            <Route path='/chat/1' element={<ChatPage />} />
+            <Route path='/chat/:id' element={<ChatPage />} />
 
           </Routes>
         </div>
