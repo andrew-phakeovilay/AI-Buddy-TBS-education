@@ -46,7 +46,7 @@ export function ChatPage() {
                         <div className="bg-custom-3 m-4 p-4 ml-[30%]">Bonjour pourrez tu m'aider à trouver où faire les démarches pour la CAF</div>
                         <div className="bg-custom-3 m-4 p-4 mr-[20%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quae laboriosam! Quod assumenda labore veniam maiores! Repellendus nulla necessitatibus placeat atque obcaecati quod voluptatum odio ad eveniet nam, sunt perspiciatis.</div>
                     </div>
-                    <input id="chat" name="chat" type="text" className="absolute z-20 bottom-25 md:bottom-20 bg-custom-3 p-2 w-9/12 sm:w-1/2 left-1/2 -translate-x-1/2 border border-red-6" placeholder="Poser une question" />
+                    <input id="chat" name="chat" type="text" className="absolute z-20 bottom-25 md:bottom-20 bg-custom-3 p-2 w-9/12 sm:w-1/2 left-1/2 -translate-x-1/2 border border-custom-6" placeholder="Poser une question" />
                 </main>
             </div>
         </div>
