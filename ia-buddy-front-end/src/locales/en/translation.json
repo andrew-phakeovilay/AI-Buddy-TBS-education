@@ -2,6 +2,14 @@
 "login": "Login",
 "admin": "Administration",
 "chat": "Chat",
+
+"login-description-form":"Log in",
+"login-id-label-form":"Username",
+"login-id-placeholder-form":"Enter your username",
+"login-password-label-form": "Password",
+"login-password-placeholder-form":"Enter your password",
+"login-submit-form":"Login",
+
 "add": "Add",
 "add-ressource": "Add a ressource",
 "title-label-add-ressource-form": "Title of the ressource",
@@ -15,5 +23,8 @@
 "cancel-form":"Cancel",
 "submit-form":"Submit",
 "edit":"✏️ Edit",
-"delete":"🗑️ Delete"
+"delete":"🗑️ Delete",
+
+"new-chat":"New Chat",
+"ask-prompt":"Ask a question"
 }

@@ -15,7 +15,7 @@ function App() {
     <LanguageProvider>
 
       <BrowserRouter>
-        <div className='flew flex-col min-h-screen h-screen '>
+        <div className='flew flex-col min-h-screen h-screen overflow-hidden'>
         <nav className="flex justify-center items-center gap-6 p-4">
 
 
@@ -34,8 +34,6 @@ function App() {
         </Routes>
 
         </div>
-
-
 
       </BrowserRouter>
     </LanguageProvider>

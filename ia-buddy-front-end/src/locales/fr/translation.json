@@ -2,6 +2,14 @@
 "login": "Connexion",
 "admin": "Administration",
 "chat": "Chat",
+
+"login-description-form":"Connecte-toi",
+"login-id-label-form":"Identifiant",
+"login-id-placeholder-form":"Entrez votre identifiant",
+"login-password-label-form":"Mot de passe",
+"login-password-placeholder-form":"Entrez votre mot de passe",
+"login-submit-form":"Connexion",
+
 "add": "Ajouter",
 "add-ressource": "Ajouter une ressource",
 "title-label-add-ressource-form": "Titre de la ressource",
@@ -15,5 +23,8 @@
 "cancel-form":"Annuler",
 "submit-form":"Soumettre",
 "edit":"✏️ Modifier",
-"delete":"🗑️ Supprimer"
+"delete":"🗑️ Supprimer",
+
+"new-chat":"Nouveau Chat",
+"ask-prompt":"Poser une question"
 }
