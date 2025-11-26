@@ -1,6 +1,37 @@
-import "../style/login.css"
+import "../style/login.css";
+import { UserStore } from "../context/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const store = UserStore.getInstance();
+
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    // Validation des champs
+    if (!username || !password) {
+      console.log("Veuillez remplir tous les champs.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3000/login", {
+        username,
+        password,
+      });
+      const { userName } = response.data;
+      store.login(userName); // Mettre à jour le contexte
+      navigate("/hub"); // Rediriger vers le hub après connexion réussie
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="login-container">
       <form className="login-form">
