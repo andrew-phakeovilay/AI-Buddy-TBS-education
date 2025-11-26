@@ -36,7 +36,7 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex justify-center items-center">
+    <div className="min-h-0 bg-white flex justify-center items-center">
       <form className="w-full max-w-sm text-center text-black" onSubmit={handleSubmit}>
         
         <h1 className="text-2xl font-bold mb-1">AI Buddy</h1>
