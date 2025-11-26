@@ -13,7 +13,7 @@ function App() {
       <div className='flew flex-col min-h-screen h-screen overflow-hidden'>
         {/* <nav className='absolute right-0 bg-red-12 flex justify-center gap-3'> */}
 
-        <nav className="flex justify-center items-center gap-6 p-4">
+        <nav className="flex justify-center items-center gap-6 p-4 bg-rouge text-white">
 
 
           <Link to="/login">Connexion à l'outil</Link>

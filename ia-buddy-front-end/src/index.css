@@ -8,6 +8,14 @@
 @custom-variant mint ([data-theme=mint] &);
 
 @theme {
+  --color-noir:#1d1d1b;
+  --color-rouge:#cf2e2e; 
+  --color-vivad-rouge: #ff3a52;
+  --color-rouge-bg:#FFF7F7;
+  --color-rouge-bg2:#FFEAE9;
+  --color-rose: #f78da7;
+  --color-jaune: #fcb900;
+
   --color-red-1: #191111;
   --color-red-2: #201314;
   --color-red-3: #3B1219;
