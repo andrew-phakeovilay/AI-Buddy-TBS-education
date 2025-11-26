@@ -1,0 +1,19 @@
+{
+"login": "Login",
+"admin": "Administration",
+"chat": "Chat",
+"add": "Add",
+"add-ressource": "Add a ressource",
+"title-label-add-ressource-form": "Title of the ressource",
+"type-label-form":"Type",
+"image-radio-form":"Image",
+"ressource-radio-form":"Ressource",
+"import-file-label-form":"Import an image",
+"import-file-button-form":"Choose an image",
+"selected-file":"Selected image",
+"link-ressource-label-form":"Link",
+"cancel-form":"Cancel",
+"submit-form":"Submit",
+"edit":"✏️ Edit",
+"delete":"🗑️ Delete"
+}
