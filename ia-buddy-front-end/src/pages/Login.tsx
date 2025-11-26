@@ -10,7 +10,7 @@ export function Login() {
   const navigate = useNavigate();
   const store = UserStore.getInstance();
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // Validation des champs
@@ -20,13 +20,14 @@ export function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("http://localhost:3000/api/login", {
         username,
         password,
       });
-      const { userName } = response.data;
-      store.login(userName); // Mettre à jour le contexte
-      navigate("/hub"); // Rediriger vers le hub après connexion réussie
+      console.log(response.data.username);
+      const { userInfo } = response.data.username; // Assurez-vous que l'API renvoie userName
+      store.login(userInfo); // Mettre à jour le store
+      navigate("/chat/1"); // Rediriger après connexion réussie
     } catch (error) {
       console.log(error);
     }
@@ -34,19 +35,31 @@ export function Login() {
 
   return (
     <div className="login-container">
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <h1 className="login-title">AI Buddy</h1>
         <p className="login-description">Inscription</p>
 
         <ul>
           <li>
-            <label htmlFor="mail">Identifiant</label>
-            <input placeholder="Entrez votre email" type="email" />
+            <label htmlFor="username">Identifiant</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Entrez votre email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </li>
 
           <li>
             <label htmlFor="password">Mot de passe</label>
-            <input placeholder="Entrez votre mot de passe" type="password" />
+            <input
+              id="password"
+              type="password"
+              placeholder="Entrez votre mot de passe"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </li>
 
           <li>
