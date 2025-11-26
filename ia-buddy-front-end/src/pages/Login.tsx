@@ -12,7 +12,7 @@ export function Login() {
 
   const { t } = useTranslation();
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     // Validation des champs
@@ -22,13 +22,14 @@ export function Login() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post("http://localhost:3000/api/login", {
         username,
         password,
       });
-      const { userName } = response.data;
-      store.login(userName); // Mettre à jour le contexte
-      navigate("/hub"); // Rediriger vers le hub après connexion réussie
+      console.log(response.data.username);
+      const { userInfo } = response.data.username; // Assurez-vous que l'API renvoie userName
+      store.login(userInfo); // Mettre à jour le store
+      navigate("/chat/1"); // Rediriger après connexion réussie
     } catch (error) {
       console.log(error);
     }
@@ -36,9 +37,9 @@ export function Login() {
 
   return (
     <div className="min-h-screen bg-white flex justify-center items-center">
-      <form className="w-full max-w-sm text-center text-black">
+      <form className="w-full max-w-sm text-center text-black" onSubmit={handleSubmit}>
         
-        <h1 className="text-2xl font-bold mb-1" onSubmit={handleSubmit}>AI Buddy</h1>
+        <h1 className="text-2xl font-bold mb-1">AI Buddy</h1>
         <p className="text-sm text-gray-400 mb-10">
           {t("login-description-form")}
         </p>

@@ -10,6 +10,8 @@
 "login-password-placeholder-form":"Entrez votre mot de passe",
 "login-submit-form":"Connexion",
 
+"logout":"Déconnexion",
+
 "add": "Ajouter",
 "add-ressource": "Ajouter une ressource",
 "title-label-add-ressource-form": "Titre de la ressource",

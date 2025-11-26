@@ -1,9 +1,10 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { NavChat } from "../components/NavChat";
 import { MenuSVG } from "../svgs/MenuSVG";
 import { CloseSVG } from "../svgs/CloseSVG";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { UserStore } from "../context/auth";
 
 export function ChatPage() {
     const { t } = useTranslation();
@@ -11,14 +12,32 @@ export function ChatPage() {
     const [open,setOpen] = useState(false)
     const navigate = useNavigate()
     const params = useParams()
+    const store = UserStore.getInstance();
+
+    useEffect(() => {
+        const user = UserStore.getInstance().getUser();
+
+        if (!user) {
+        navigate("/login");
+        }
+    }, [navigate]);
+
     const onClick = useCallback((id:number)=>{
         setOpen(false)
         navigate("/chat/"+id)
     },[navigate])
 
 
+    function handleLogout() {
+        store.logout();
+        navigate("/login");
+    }
+
+
+
     return (
         <div className="flex h-full flex-col md:flex-row" data-theme={getTheme(params.id)} >
+            <button onClick={handleLogout}>{t("logout")}</button>
             <aside className={`${open?"fixed left-0 z-40 w-64":"hidden"} md:static md:block  w-full md:w-80 bg-custom-1 text-custom-12`}>
                 <div className={`${open?"absolute":"hidden"} md:hidden top-4 left-4`}
                 onClick={()=>{setOpen(false)}}>
