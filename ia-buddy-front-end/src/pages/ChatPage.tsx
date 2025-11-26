@@ -13,6 +13,7 @@ export function ChatPage() {
         navigate("/chat/"+id)
     },[navigate])
 
+
     return (
         <div className="flex h-full flex-col md:flex-row" data-theme={getTheme(params.id)} >
             <aside className={`${open?"fixed left-0 z-40 w-64":"hidden"} md:static md:block  w-full md:w-80 bg-custom-1 text-custom-12`}>
@@ -22,6 +23,7 @@ export function ChatPage() {
                 </div>
                 
                 <nav className={`mt-10 flex flex-col `}>
+                    <NavChat onClick={onClick} id={0} name="Nouveau chat"/>
                     <NavChat onClick={onClick} id={1} name="Chat 1"/>
                     <NavChat onClick={onClick} id={2} name="Chat 2 - Red"/>
                     <NavChat onClick={onClick} id={3} name="Chat 3 - Bleu"/>
@@ -31,6 +33,7 @@ export function ChatPage() {
                 </nav>
             </aside>
 
+            
             <div className="relative flex flex-1 h-full w-full flex-col bg-custom-2 text-custom-12">
                 <div className={`${open?"hidden":"absolute"} m-4 md:hidden z-10`}
                 onClick={()=>{setOpen(true)}}>
@@ -40,15 +43,23 @@ export function ChatPage() {
                     <h1>AI Buddy</h1>
                 </div>
                 <main className="relative flex flex-col h-full flex-1 overflow-hidden">
-                    <div className="flex flex-col overflow-auto pb-20 mb-20">
-                        <div className="bg-custom-3 m-4 p-4 ml-[30%]">Bonjour pourrez tu m'aider à trouver où faire les démarches pour la CAF</div>
-                        <div className="bg-custom-3 m-4 p-4 mr-[20%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quae laboriosam! Quod assumenda labore veniam maiores! Repellendus nulla necessitatibus placeat atque obcaecati quod voluptatum odio ad eveniet nam, sunt perspiciatis.</div>
-                        <div className="bg-custom-3 m-4 p-4 ml-[30%]">Bonjour pourrez tu m'aider à trouver où faire les démarches pour la CAF</div>
-                        <div className="bg-custom-3 m-4 p-4 mr-[20%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quae laboriosam! Quod assumenda labore veniam maiores! Repellendus nulla necessitatibus placeat atque obcaecati quod voluptatum odio ad eveniet nam, sunt perspiciatis.</div>
-                    </div>
-                    <input id="chat" name="chat" type="text" className="absolute z-20 bottom-25 md:bottom-20 bg-custom-3 p-2 w-9/12 sm:w-1/2 left-1/2 -translate-x-1/2 border border-custom-6" placeholder="Poser une question" />
+                    {
+                        params.id != "0" ?
+                        <div className="flex flex-col overflow-auto pb-20 mb-20">
+                            <div className="bg-custom-3 m-4 p-4 ml-[30%]">Bonjour pourrez tu m'aider à trouver où faire les démarches pour la CAF</div>
+                            <div className="bg-custom-3 m-4 p-4 mr-[20%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quae laboriosam! Quod assumenda labore veniam maiores! Repellendus nulla necessitatibus placeat atque obcaecati quod voluptatum odio ad eveniet nam, sunt perspiciatis.</div>
+                            <div className="bg-custom-3 m-4 p-4 ml-[30%]">Bonjour pourrez tu m'aider à trouver où faire les démarches pour la CAF</div>
+                            <div className="bg-custom-3 m-4 p-4 mr-[20%]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quae laboriosam! Quod assumenda labore veniam maiores! Repellendus nulla necessitatibus placeat atque obcaecati quod voluptatum odio ad eveniet nam, sunt perspiciatis.</div>
+                        </div>:
+                        <h1 className="mx-auto mt-[13%] mb-5 text-2xl font-semibold">En quoi puis-je vous aidez?</h1>
+                    }
+                    
+                    <input id="chat" name="chat" type="text" 
+                    className={`${params.id=="0"?"mx-auto ":"absolute z-20 bottom-25 md:bottom-20 -translate-x-1/2"}  bg-custom-3 p-2 w-9/12 sm:w-1/2 left-1/2  border border-custom-6`} 
+                    placeholder="Poser une question" />
                 </main>
             </div>
+            
         </div>
     )
 }
@@ -58,6 +69,7 @@ function getTheme(id:string|undefined){
     const theme = "default"
     if(!id) return theme
     switch(id){
+        case "0": return "red"
         case "2": return "red"
         case "3": return "bleu"
         case "4": return "green"
