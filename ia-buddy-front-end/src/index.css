@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
-@theme{
+@custom-variant red ([data-theme=red] &);
+@custom-variant bleu ([data-theme=bleu] &);
+@custom-variant pink ([data-theme=pink] &);
+@custom-variant green ([data-theme=green] &);
+@custom-variant sage ([data-theme=sage] &);
+@custom-variant mint ([data-theme=mint] &);
+
+@theme {
   --color-red-1: #191111;
   --color-red-2: #201314;
   --color-red-3: #3B1219;
@@ -13,4 +20,106 @@
   --color-red-10: #EC5D5E;
   --color-red-11: #FF9592;
   --color-red-12: #FFD1D9;
+
+  --color-custom-1: #191111;
+  --color-custom-2: #201314;
+  --color-custom-3: #3B1219;
+  --color-custom-4: #500F1C;
+  --color-custom-5: #611623;
+  --color-custom-6: #72232D;
+  --color-custom-7: #8C333A;
+  --color-custom-8: #B54548;
+  --color-custom-9: #E5484D;
+  --color-custom-10: #EC5D5E;
+  --color-custom-11: #FF9592;
+  --color-custom-12: #FFD1D9;
+}
+
+@layer base {
+  * {
+    @variant red {
+      --color-custom-1: #FFFCFC;
+      --color-custom-2: #FFF7F7;
+      --color-custom-3: #FEEBEC;
+      --color-custom-4: #FFDBDC;
+      --color-custom-5: #FFCDCE;
+      --color-custom-6: #FDBDBE;
+      --color-custom-7: #F4A9AA;
+      --color-custom-8: #EB8E90;
+      --color-custom-9: #E5484D;
+      --color-custom-10: #DC3E42;
+      --color-custom-11: #CE2C31;
+      --color-custom-12: #641723;
+    }
+    @variant bleu {
+      --color-custom-1: #FBFDFF;
+      --color-custom-2: #F4FAFF;
+      --color-custom-3: #E6F4FE;
+      --color-custom-4: #D5EFFF;
+      --color-custom-5: #C2E5FF;
+      --color-custom-6: #ACD8FC;
+      --color-custom-7: #8EC8F6;
+      --color-custom-8: #5EB1EF;
+      --color-custom-9: #0090FF;
+      --color-custom-10: #0588F0;
+      --color-custom-11: #0D74CE;
+      --color-custom-12: #113264;
+    }
+    @variant pink {
+      --color-custom-1: #FFFCFD;
+      --color-custom-2: #FFF7F8;
+      --color-custom-3: #FFE8ED;
+      --color-custom-4: #FFD9E2;
+      --color-custom-5: #FFCAD6;
+      --color-custom-6: #FFB9C9;
+      --color-custom-7: #FAA5B8;
+      --color-custom-8: #F288A2;
+      --color-custom-9: #F78DA7;
+      --color-custom-10: #EB829C;
+      --color-custom-11: #AE4C67;
+      --color-custom-12: #6A062F;
+    }
+    @variant green {
+      --color-custom-1: #FBFEFC;
+      --color-custom-2: #F4FBF6;
+      --color-custom-3: #E6F6EB;
+      --color-custom-4: #D6F1DF;
+      --color-custom-5: #C4E8D1;
+      --color-custom-6: #ADDDC0;
+      --color-custom-7: #8ECEAA;
+      --color-custom-8: #5BB98B;
+      --color-custom-9: #30A46C;
+      --color-custom-10: #2B9A66;
+      --color-custom-11: #218358;
+      --color-custom-12: #193B2D;
+    }
+    @variant sage {
+      --color-custom-1: #FBFDFC;
+      --color-custom-2: #F7F9F8;
+      --color-custom-3: #EEF1F0;
+      --color-custom-4: #E6E9E8;
+      --color-custom-5: #DFE2E0;
+      --color-custom-6: #D7DAD9;
+      --color-custom-7: #CBCFCD;
+      --color-custom-8: #B8BCBA;
+      --color-custom-9: #868E8B;
+      --color-custom-10: #7C8481;
+      --color-custom-11: #5F6563;
+      --color-custom-12: #1A211E;
+    }
+    @variant mint {
+      --color-custom-1: #F9FEFD;
+      --color-custom-2: #F2FBF9;
+      --color-custom-3: #DDF9F2;
+      --color-custom-4: #C8F4E9;
+      --color-custom-5: #B3ECDE;
+      --color-custom-6: #9CE0D0;
+      --color-custom-7: #7ECFBD;
+      --color-custom-8: #4CBBA5;
+      --color-custom-9: #86EAD4;
+      --color-custom-10: #7DE0CB;
+      --color-custom-11: #027864;
+      --color-custom-12: #16433C;
+    }
+  }
 }
