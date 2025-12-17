@@ -12,7 +12,7 @@ export function DropDownMenu({ className = "" } ){
             <ElMenu anchor="bottom end" popover className="w-56 origin-top-right 
           divide-y divide-white/10 
           rounded-md 
-          bg-rouge 
+          bg-vivad-rouge 
           outline-1 -outline-offset-1 outline-white/10 
           transition transition-discrete
           [--anchor-gap:--spacing(2)]  
