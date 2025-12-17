@@ -1,29 +1,49 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { NavChat } from "../components/NavChat";
 import { MenuSVG } from "../svgs/MenuSVG";
 import { CloseSVG } from "../svgs/CloseSVG";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { UserStore } from "../context/auth";
+import { useAuth } from "../context/AuthContext";
 
 export function ChatPage() {
+    const { t } = useTranslation();
+    const { user } = useAuth()
     const [open,setOpen] = useState(false)
     const navigate = useNavigate()
     const params = useParams()
+
+    useEffect(() => {
+        if (!user) {
+        navigate("/login");
+        }
+    }, [navigate]);
+
     const onClick = useCallback((id:number)=>{
         setOpen(false)
         navigate("/chat/"+id)
     },[navigate])
 
 
+    
+
+
+
     return (
+
         <div className="flex h-full flex-col md:flex-row">
+            
             <aside className={`${open?"fixed left-0 z-40 w-64":"hidden"} md:static md:block  w-full md:w-80 bg-rouge-bg2 text-noir`}>
+
                 <div className={`${open?"absolute":"hidden"} md:hidden top-4 left-4`}
                 onClick={()=>{setOpen(false)}}>
                     <CloseSVG/>
                 </div>
                 
                 <nav className={`mt-10 flex flex-col `}>
-                    <NavChat onClick={onClick} id={0} name="Nouveau chat" isDropDown={false} />
+
+                    <NavChat onClick={onClick} id={0} name={t("new-chat")} isDropDown={false}/>
                     <NavChat onClick={onClick} id={1} name="Chat 1"/>
                     <NavChat onClick={onClick} id={2} name="Chat 2"/>
                     <NavChat onClick={onClick} id={3} name="Chat 3"/>
@@ -53,7 +73,8 @@ export function ChatPage() {
                     
                     <input id="chat" name="chat" type="text" 
                     className={`${params.id=="0"?"mx-auto ":"absolute z-20 bottom-25 md:bottom-20 -translate-x-1/2"}  text-white bg-rouge p-2 w-9/12 sm:w-1/2 left-1/2 rounded-2xl shadow-lg shadow-rouge`} 
-                    placeholder="Poser une question" />
+                    placeholder={t("ask-prompt")} />
+
                 </main>
             </div>
             

@@ -1,25 +1,43 @@
 
 import './App.css'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, useNavigate } from 'react-router-dom'
 import { Login } from './pages/Login'
 import { Admin } from './pages/Admin'
 import { ChatPage } from './pages/ChatPage'
+import { LanguageProvider } from './components/LanguageProvider'
+import ButtonLanguage from './components/ButtonLanguage'
+import { useTranslation } from 'react-i18next';
+import { UserStore } from './context/auth'
+import { useEffect, useState } from 'react'
+import { useAuth } from './context/AuthContext'
 
 function App() {
+  const { t } = useTranslation();
+  const {user, logout} = useAuth()
+  const store = UserStore.getInstance();
+  const [isConnect,setIsConnect] = useState(!!store.getUser())
+  
 
+  function handleLogout() {
+    logout()
+        //store.logout();
+  }
 
   return (
-    <BrowserRouter>
-      <div className='flew flex-col min-h-screen h-screen overflow-hidden'>
-        {/* <nav className='absolute right-0 bg-red-12 flex justify-center gap-3'> */}
+    <LanguageProvider>
 
+      <BrowserRouter>
+        <div className='flew flex-col min-h-screen h-screen overflow-hidden'>
         <nav className="flex justify-center items-center gap-6 p-4 bg-rouge text-white">
 
-
-          <Link to="/login">Connexion à l'outil</Link>
-          <Link to="/admin">Administration</Link>
-          <Link to="/chat/1">Chat 1</Link>
-          <button className="bg-rose-600 px-3 py-1 rounded-md text-sm text-white">FR / EN</button>
+          {user ? 
+          <Link to={"/login"} onClick={handleLogout} >{t("logout")}</Link>: 
+          <Link to="/login">{t('login')}</Link>}
+          
+          
+          <Link to="/admin">{t('admin')}</Link>
+          <Link to="/chat/1">{t('chat')}</Link>
+          <ButtonLanguage />
         </nav>
 
         <Routes>
@@ -30,16 +48,10 @@ function App() {
           <Route path='/chat/:id' element={<ChatPage />} />
         </Routes>
 
+        </div>
 
-
-        {/* </nav> */}
-        {/* <div className='flex-1 overflow-hidden h-full w-full'>
-        </div> */}
-      </div>
-
-
-
-    </BrowserRouter>
+      </BrowserRouter>
+    </LanguageProvider>
   )
 }
 

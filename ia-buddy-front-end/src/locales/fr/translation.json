@@ -1,0 +1,32 @@
+{
+"login": "Connexion",
+"admin": "Administration",
+"chat": "Chat",
+
+"login-description-form":"Connecte-toi",
+"login-id-label-form":"Identifiant",
+"login-id-placeholder-form":"Entrez votre identifiant",
+"login-password-label-form":"Mot de passe",
+"login-password-placeholder-form":"Entrez votre mot de passe",
+"login-submit-form":"Connexion",
+
+"logout":"Déconnexion",
+
+"add": "Ajouter",
+"add-ressource": "Ajouter une ressource",
+"title-label-add-ressource-form": "Titre de la ressource",
+"type-label-form":"Type",
+"image-radio-form":"Image",
+"ressource-radio-form":"Ressource",
+"import-file-label-form":"Importer une image",
+"import-file-button-form":"Choisir une image",
+"selected-file":"Image choisie",
+"link-ressource-label-form":"Lien",
+"cancel-form":"Annuler",
+"submit-form":"Soumettre",
+"edit":"✏️ Modifier",
+"delete":"🗑️ Supprimer",
+
+"new-chat":"Nouveau Chat",
+"ask-prompt":"Poser une question"
+}

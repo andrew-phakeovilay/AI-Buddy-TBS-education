@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
     type: "image" | "ressource";
@@ -9,6 +10,8 @@ interface FormData {
 
 export function Admin() {
 
+    const { t } = useTranslation();
+    
     const [showForm, setShowForm] = useState<boolean>(false);
     const [formData, setFormData] = useState<FormData>({
         type: "image",
@@ -65,17 +68,17 @@ export function Admin() {
         <div className="min-h-screen bg-white text-black flex flex-col items-center p-6">
             <div className="w-full max-w-md">
                 <div className="flex justify-center items-center mb-6">
-                    <h1 className="text-xl font-semibold">Administration</h1>
+                    <h1 className="text-xl font-semibold">{t('admin')}</h1>
                 </div>
 
                 <button className="bg-rose-500 hover:bg-slate-500 text-white px-4 py-2 rounded-md mb-6" onClick={handleAddClick}>
-                Ajouter
+                {t('add')}
                 </button>
                 
                 {showForm && (
                     <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm">
                         <div className="bg-white rounded-lg shadow-2xl w-full max-w-md p-6">
-                            <h3 className="text-lg font-bold mb-4">Ajouter une ressource</h3>
+                            <h3 className="text-lg font-bold mb-4">{t('add-ressource')}</h3>
                         
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
@@ -83,7 +86,7 @@ export function Admin() {
                                         htmlFor="titre"
                                         className="block text-sm font-medium text-gray-700"
                                     >
-                                    Titre
+                                    {t("title-label-add-ressource-form")}
                                     </label>
                                     <input
                                         type="text"
@@ -98,7 +101,7 @@ export function Admin() {
 
                                 <div>
                                     <span className="block text-sm font-medium text-gray-700">
-                                        Type
+                                        {t('type-label-form')}
                                     </span>
                                     <div className="flex space-x-4 mt-2">
                                         <label className="flex items-center space-x-2">
@@ -110,7 +113,7 @@ export function Admin() {
                                             onChange={handleChange}
                                             className="text-pink-500 focus:ring-pink-500"
                                         />
-                                        <span>Image</span>
+                                        <span>{t('image-radio-form')}</span>
                                         </label>
                                         <label className="flex items-center space-x-2">
                                         <input
@@ -121,7 +124,7 @@ export function Admin() {
                                             onChange={handleChange}
                                             className="text-pink-500 focus:ring-pink-500"
                                         />
-                                        <span>Ressource</span>
+                                        <span>{t('ressource-radio-form')}</span>
                                         </label>
                                     </div>
                                 </div>
@@ -131,14 +134,14 @@ export function Admin() {
                                         <label
                                             className="block text-sm font-medium text-gray-700 mb-2"
                                         >
-                                        Importer un fichier
+                                        {t('import-file-label-form')}
                                         </label>
                                         
                                         <label
                                             htmlFor="fichier"
                                             className="cursor-pointer inline-block bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium py-1.5 px-3 rounded shadow-sm transition duration-200 mb-2"
                                         >
-                                        Choisir un fichier
+                                        {t('import-file-button-form')}
                                         </label>
                                         
                                         <input
@@ -147,6 +150,12 @@ export function Admin() {
                                             onChange={handleFileChange}
                                             className="hidden"
                                         />
+
+                                        {formData.fichier && (
+                                            <p className="text-sm text-gray-600 mt-1">
+                                                {t('selected-file')} : {formData.fichier.name}
+                                            </p>
+                                        )}
                                     </div>
                                 )}
 
@@ -156,7 +165,7 @@ export function Admin() {
                                             htmlFor="lien"
                                             className="block text-sm font-medium text-gray-700"
                                         >
-                                        Lien
+                                        {t('link-ressource-label-form')}
                                         </label>
                                         <input
                                             type="url"
@@ -177,37 +186,19 @@ export function Admin() {
                                         onClick={handleCancel}
                                         className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
                                     >
-                                    Annuler
+                                    {t('cancel-form')}
                                     </button>
                                     <button
                                         type="submit"
                                         className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded"
                                     >
-                                    Enregistrer
+                                    {t('submit-form')}
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 )}
-
-
-                <div className="space-y-4">
-                    <div className="bg-white text-black rounded-lg p-4 shadow">
-                        <h2 className="font-semibold">Titre image 1</h2>
-                        <p className="text-gray-500 text-sm">Image importée</p>
-                    </div>
-
-                    <div className="bg-white text-black rounded-lg p-4 shadow">
-                        <h2 className="font-semibold">Lien ressources 1</h2>
-                        <p className="text-gray-500 text-sm">Lien de la ressource</p>
-                    </div>
-
-                    <div className="bg-white text-black rounded-lg p-4 shadow">
-                        <h2 className="font-semibold">Lien ressources 2</h2>
-                        <p className="text-gray-500 text-sm">Lien de la ressource</p>
-                    </div>
-                </div>
 
                 <div className="mt-4 space-y-4">
                     {items.map((item, index) => (
@@ -226,13 +217,13 @@ export function Admin() {
                                 onClick={() => handleEdit(index)}
                                 className="bg-blue-500 hover:bg-slate-500 text-white px-4 py-2 rounded-md mb-6"
                             >
-                                ✏️ Modifier
+                                {t('edit')}
                             </button>
                             <button
                                 onClick={() => handleDelete(index)}
                                 className="bg-rose-500 hover:bg-slate-500 text-white px-4 py-2 rounded-md mb-6"
                             >
-                                🗑️ Supprimer
+                                {t('delete')}
                             </button>
                         </div>
                     </>
