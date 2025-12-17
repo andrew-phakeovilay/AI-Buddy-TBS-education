@@ -4,7 +4,6 @@ import { MenuSVG } from "../svgs/MenuSVG";
 import { CloseSVG } from "../svgs/CloseSVG";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { UserStore } from "../context/auth";
 import { useAuth } from "../context/AuthContext";
 
 export function ChatPage() {

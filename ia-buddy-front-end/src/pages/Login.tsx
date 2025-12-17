@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { UserStore } from "../context/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const store = UserStore.getInstance();
+  const {login} = useAuth()
 
   const { t } = useTranslation();
 
@@ -27,8 +27,8 @@ export function Login() {
         password,
       });
       console.log(response.data.username);
-      const { userInfo } = response.data.username; // Assurez-vous que l'API renvoie userName
-      store.login(userInfo); // Mettre à jour le store
+      const userInfo  = response.data.username; // Assurez-vous que l'API renvoie userName
+      login(userInfo); 
       navigate("/chat/1"); // Rediriger après connexion réussie
     } catch (error) {
       console.log(error);

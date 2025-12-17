@@ -7,20 +7,15 @@ import { ChatPage } from './pages/ChatPage'
 import { LanguageProvider } from './components/LanguageProvider'
 import ButtonLanguage from './components/ButtonLanguage'
 import { useTranslation } from 'react-i18next';
-import { UserStore } from './context/auth'
-import { useEffect, useState } from 'react'
 import { useAuth } from './context/AuthContext'
 
 function App() {
   const { t } = useTranslation();
   const {user, logout} = useAuth()
-  const store = UserStore.getInstance();
-  const [isConnect,setIsConnect] = useState(!!store.getUser())
   
 
   function handleLogout() {
     logout()
-        //store.logout();
   }
 
   return (
